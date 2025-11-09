@@ -1,0 +1,52 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tp_java_Biblioteca:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/tp_java_Biblioteca_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.4.12" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.4.12" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.21.9" />
+          <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.33" />
+          <element id="library" level="project" name="Maven: jakarta.annotation:jakarta.annotation-api:3.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.authentication:jakarta.authentication-api:3.1.0" />
+          <element id="library" level="project" name="Maven: jakarta.data:jakarta.data-api:1.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.ejb:jakarta.ejb-api:4.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.el:jakarta.el-api:6.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.enterprise.concurrent:jakarta.enterprise.concurrent-api:3.1.1" />
+          <element id="library" level="project" name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0" />
+          <element id="library" level="project" name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-el-api:4.1.0" />
+          <element id="library" level="project" name="Maven: jakarta.enterprise:jakarta.enterprise.lang-model:4.1.0" />
+          <element id="library" level="project" name="Maven: jakarta.faces:jakarta.faces-api:4.1.2" />
+          <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.interceptor:jakarta.interceptor-api:2.2.0" />
+          <element id="library" level="project" name="Maven: jakarta.json.bind:jakarta.json.bind-api:3.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.json:jakarta.json-api:2.1.3" />
+          <element id="library" level="project" name="Maven: jakarta.persistence:jakarta.persistence-api:3.2.0" />
+          <element id="library" level="project" name="Maven: jakarta.platform:jakarta.jakartaee-core-api:11.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.platform:jakarta.jakartaee-web-api:11.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.security.enterprise:jakarta.security.enterprise-api:4.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2" />
+          <element id="library" level="project" name="Maven: jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0" />
+          <element id="library" level="project" name="Maven: jakarta.servlet:jakarta.servlet-api:6.1.0" />
+          <element id="library" level="project" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.1" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:3.1.1" />
+          <element id="library" level="project" name="Maven: jakarta.websocket:jakarta.websocket-api:2.2.0" />
+          <element id="library" level="project" name="Maven: jakarta.websocket:jakarta.websocket-client-api:2.2.0" />
+          <element id="library" level="project" name="Maven: jakarta.ws.rs:jakarta.ws.rs-api:4.0.0" />
+          <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.13.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.13.2" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.13.2" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-engine:1.13.2" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.3.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.9" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="tp_java_Biblioteca" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="tp_java_Biblioteca/web/Web" />
+    </root>
+  </artifact>
+</component>

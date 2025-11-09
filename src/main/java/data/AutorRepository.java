@@ -2,14 +2,12 @@ package data;
 import models.Autor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.sql.*;
 import java.util.LinkedList;
 
 public class AutorRepository {
     private static final Logger LOG = LoggerFactory.getLogger(AutorRepository.class);
-    private DBConnection dbConnection = new DBConnection();
-
+    private final DBConnection dbConnection = new DBConnection();
     public LinkedList<Autor> getAllAutores(){
         Statement stmt = null;
         ResultSet rs = null;
@@ -121,7 +119,7 @@ public class AutorRepository {
             conn = DBConnection.getConnection();
             if(conn != null){
                 stmt = conn.prepareStatement(
-                        "UPDATE AUTOR SET NAME = ?"
+                        "UPDATE AUTORES SET NOMBRE = ?"
                 );
                 stmt.setString(1, a.getNombre());
                 stmt.executeUpdate();

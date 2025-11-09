@@ -13,11 +13,12 @@ public class DBConnection {
     private static final String url =
             "jdbc:mysql://localhost:3306/"+db
             + "?user="+user+"&password="+password;
-    protected DBConnection() {
+    static {
         try {
             Class.forName(driver);
-        }catch (Exception e){
-            LOG.error("Error al registrar el driver '{} '",driver,e);
+            LOG.info("Driver '{}' registrado correctamente", driver);
+        } catch (ClassNotFoundException e) {
+            LOG.error("Error al registrar el driver '{}'", driver, e);
         }
     }
     protected static Connection getConnection(){

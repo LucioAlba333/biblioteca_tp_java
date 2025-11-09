@@ -1,4 +1,4 @@
-package com.utn.biblioteca.tp_java_biblioteca;
+package com.utn.biblioteca.tp_java_biblioteca.Autores;
 
 import data.AutorRepository;
 import jakarta.servlet.*;
@@ -19,9 +19,7 @@ public class AutorGetServlet extends HttpServlet {
         LinkedList<Autor> autores = autorRepository.getAllAutores();
         HttpSession session = request.getSession();
         session.setAttribute("autores",autores);
-        response.sendRedirect("listaAutores.jsp");
-
-
+        request.getRequestDispatcher("/WEB-INF/views/listaAutores.jsp").forward(request, response);
     }
 
     @Override
