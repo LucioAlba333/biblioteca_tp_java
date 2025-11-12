@@ -1,7 +1,7 @@
 package models.enums;
 
 public enum EstadoEjemplar {
-    DISPONIBLE(1), PRESTADO(2), RESERVADO(3);
+    NUEVO(1), BUENO(2), DEGASTADO(3), PERDIDO(4);
 
     private final int codigo;
 

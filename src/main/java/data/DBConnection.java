@@ -13,6 +13,7 @@ public class DBConnection {
     private static final String url =
             "jdbc:mysql://localhost:3306/"+db
             + "?user="+user+"&password="+password;
+
     static {
         try {
             Class.forName(driver);
@@ -21,29 +22,14 @@ public class DBConnection {
             LOG.error("Error al registrar el driver '{}'", driver, e);
         }
     }
-    protected static Connection getConnection(){
+    protected static Connection getConnection() throws SQLException {
         try {
             return DriverManager.getConnection(url);
         }catch (SQLException e){
             LOG.error(e.getMessage());
-            return null;
+            throw e;
+
         }
     }
-    protected static void closeResources(Connection conn,
-                                         Statement stmt,
-                                         ResultSet rs){
-        try {
-            if(rs != null){
-                rs.close();
-            }
-            if(stmt != null){
-                stmt.close();
-            }
-            if(conn != null && !conn.isClosed()){
-                conn.close();
-            }
-        }catch (SQLException e){
-            LOG.error(e.getMessage());
-        }
-    }
+
 }
