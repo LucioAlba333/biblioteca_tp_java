@@ -10,10 +10,6 @@ public class Genero {
     @Size(min = 2, max = 50, message = "la descripcion debe tener entre 2 y 50 caracteres")
     private String descripcion;
 
-    public Genero(String descripcion, int id) {
-        this.descripcion = descripcion;
-        this.id = id;
-    }
 
     public String getDescripcion() {
         return descripcion;

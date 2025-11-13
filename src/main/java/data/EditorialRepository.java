@@ -32,7 +32,7 @@ public class EditorialRepository {
     {
         String sql = "SELECT * FROM EDITORIALES WHERE ID = ?";
         try(Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql);) {
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()){
                 if (rs.next()) {
@@ -69,7 +69,7 @@ public class EditorialRepository {
     {
         String sql = "DELETE FROM editoriales WHERE ID = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0;
