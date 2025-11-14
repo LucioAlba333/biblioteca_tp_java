@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.FutureOrPresent;
 import java.util.Date;
+import java.util.LinkedList;
 
 
 public class Prestamo {
@@ -20,6 +21,20 @@ public class Prestamo {
 
     @NotNull(message = "los prestamos deben tener una persona asociada")
     private Persona persona;
+
+    public final LinkedList<Ejemplar> ejemplares;
+
+    public Prestamo(Date fechaInicio, Date fechaLimite, int id, Persona persona) {
+        this.fechaInicio = fechaInicio;
+        this.fechaLimite = fechaLimite;
+        this.id = id;
+        this.persona = persona;
+        this.ejemplares = new LinkedList<>();
+    }
+
+    public Prestamo() {
+        this.ejemplares = new LinkedList<>();
+    }
 
     public Date getFechaDevolucion() {
         return fechaDevolucion;

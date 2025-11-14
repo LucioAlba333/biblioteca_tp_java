@@ -14,40 +14,26 @@ public class LibroRepository {
     private final Logger LOG = LoggerFactory.getLogger(LibroRepository.class);
 
 
-    private Libro MapLibro(ResultSet rs) throws SQLException {
-        Libro libro = new Libro();
-        libro.setId(rs.getInt("id"));
-        libro.setTitulo(rs.getString("titulo"));
+    protected static Libro mapLibro(ResultSet rs) throws SQLException {
+
         Autor autor = new Autor();
-        autor.setId(rs.getInt("autor_id"));
-        autor.setNombre(rs.getString("autor_nombre"));
+        autor.setId(rs.getInt("id_autor"));
         Editorial editorial = new Editorial();
-        editorial.setId(rs.getInt("editorial_id"));
-        editorial.setNombre(rs.getString("editorial_nombre"));
+        editorial.setId(rs.getInt("id_editorial"));
         Genero genero = new Genero();
-        genero.setId(rs.getInt("genero_id"));
-        genero.setDescripcion(rs.getString("genero_descripcion"));
-        libro.setAutor(autor);
-        libro.setEditorial(editorial);
-        libro.setGenero(genero);
-        return libro;
+        int id =  rs.getInt("id");
+        genero.setId(rs.getInt("id_genero"));
+        String titulo = rs.getString("titulo");
+        return new Libro(autor,editorial,genero,id, titulo);
     }
     public LinkedList<Libro> getAllLibros() {
-        String sql = """
-               SELECT l.id, l.titulo, a.id AS autor_id, a.nombre as autor_nombre,
-                   e.id as editorial_id, e.nombre as editorial_nombre,
-                   g.id as genero_id, g.descripcion as genero_descripcion
-            FROM LIBROS l
-            INNER JOIN autores a ON a.id = l.id_autor
-            INNER JOIN editoriales e ON e.id = l.id_editoriales
-            INNER JOIN generos  g ON g.id = l.id_genero
-            """;
+        String sql = "SELECT * FROM LIBROS";
         LinkedList<Libro> libros = new LinkedList<>();
         try(Connection conn = DBConnection.getConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                libros.add(MapLibro(rs));
+                libros.add(mapLibro(rs));
             }
 
         }catch (SQLException e){
@@ -56,22 +42,13 @@ public class LibroRepository {
         return  libros;
     }
     public Libro getLibroById(int id) {
-        String sql = """
-            SELECT l.id, l.titulo, a.id AS autor_id, a.nombre as autor_nombre,
-                   e.id as editorial_id, e.nombre as editorial_nombre,
-                   g.id as genero_id, g.descripcion as genero_descripcion
-            FROM LIBROS l
-            INNER JOIN autores a ON a.id = l.id_autor
-            INNER JOIN editoriales e ON e.id = l.id_editoriales
-            INNER JOIN generos  g ON g.id = l.id_genero
-            WHERE l.id = ?
-            """;
+        String sql = "SELECT * FROM LIBROS WHERE id = ? ";
         try(Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
-                return MapLibro(rs);
+                return mapLibro(rs);
             }
             return null;
         }catch (SQLException e){
@@ -81,7 +58,7 @@ public class LibroRepository {
     }
     public void insertLibro(Libro libro) {
         String sql =
-            "INSERT INTO LIBROS (titulo, id_autor, id_genero, id_editoriales) VALUES (?,?,?,?)";
+            "INSERT INTO LIBROS (titulo, id_autor, id_genero, id_editorial) VALUES (?,?,?,?)";
             
         try (Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
@@ -116,7 +93,7 @@ public class LibroRepository {
             UPDATE libros SET
                 titulo = ?,
                 id_autor = ?,
-                id_editoriales = ?,
+                id_editorial = ?,
                 id_genero = ?
             WHERE id = ?
             """;

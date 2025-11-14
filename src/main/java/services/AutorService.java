@@ -9,7 +9,11 @@ import java.util.LinkedList;
 
 public class AutorService {
     private static final Logger LOG = LoggerFactory.getLogger(AutorService.class);
-    private final AutorRepository autorRepository = new AutorRepository();
+    private final AutorRepository autorRepository;
+
+    public AutorService() {
+        autorRepository = new AutorRepository();
+    }
 
     public LinkedList<Autor> listarAutores() {
         LOG.info("llamando getAllAutores");
@@ -19,10 +23,9 @@ public class AutorService {
         LOG.info("llamando getAutorById");
         return autorRepository.getAutorById(id);
     }
-    public Autor crearAutor(Autor nuevo) {
+    public void crearAutor(Autor nuevo) {
         LOG.info("Creando nuevo autor con nombre '{}'", nuevo.getNombre());
         autorRepository.insertAutor(nuevo);
-        return nuevo;
     }
     public boolean eliminarAutor(int id) {
         LOG.info("Eliminando autor con id '{}'", id);

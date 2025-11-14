@@ -20,6 +20,15 @@ public class Libro {
     @NotNull(message = "el libro debe tener una editorial")
     private Editorial editorial;
 
+    public Libro(Autor autor, Editorial editorial, Genero genero, int id, String titulo) {
+        this.autor = autor;
+        this.editorial = editorial;
+        this.genero = genero;
+        this.id = id;
+        this.titulo = titulo;
+    }
+    public Libro() {}
+
     public Autor getAutor() {
         return autor;
     }

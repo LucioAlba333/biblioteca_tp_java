@@ -12,22 +12,31 @@ public class Ejemplar {
 
     private Prestamo prestamo;
 
-    public Ejemplar(boolean disponible, EstadoEjemplar estado, int id, Libro libro) {
+    public Ejemplar(boolean disponible, EstadoEjemplar estado, int id, Libro libro, Prestamo prestamo) {
         this.disponible = disponible;
         this.estado = estado;
         this.id = id;
         this.libro = libro;
+        this.prestamo = prestamo;
+    }
+
+    public Ejemplar() {
     }
 
     public boolean isDisponible() {
         return disponible;
     }
 
+
     /**
      *  cambia de verdadero a falso y viceversa
      */
-    public void cambiarDisponibilidad() {
+    private void cambiarDisponibilidad() {
         this.disponible = !this.disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public EstadoEjemplar getEstado() {
