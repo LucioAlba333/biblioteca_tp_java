@@ -4,4 +4,6 @@
     <a href="<%= request.getContextPath() %>/libros?action=list" style="color:white;">Libros</a>
     <a href="<%= request.getContextPath() %>/editoriales?action=list" style="color:white;">Editoriales</a>
     <a href="<%= request.getContextPath() %>/generos?action=list" style="color:white;">Generos</a>
+    <a href="<%= request.getContextPath() %>/personas?action=list" style="color:white;">Personas</a>
+    <a href="<%= request.getContextPath() %>/prestamos?action=list" style="color:white;">Prestamos</a>
 </div>

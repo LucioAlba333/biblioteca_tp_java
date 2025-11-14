@@ -68,11 +68,9 @@ public class Ejemplar {
     }
 
     public void setPrestamo(Prestamo prestamo) {
-        if(this.isDisponible() || this.estado == EstadoEjemplar.PERDIDO){
-            this.prestamo = prestamo;
-            this.cambiarDisponibilidad();
-        }
-        throw new IllegalStateException("El ejemplar no está disponible para préstamo");
+
+        this.prestamo = prestamo;
+        this.cambiarDisponibilidad();
     }
     public void devolver() {
         if (this.prestamo == null) {
