@@ -28,6 +28,14 @@ public class EjemplarService {
         }
         return ejemplares;
     }
+    public LinkedList<Ejemplar> listarEjemplaresPorLibro(int idLibro) {
+        LOG.info("Llamando listarEjemplaresPorLibro");
+        LinkedList<Ejemplar> ejemplares = ejemplarRepository.getAllEjemplaresByLibro(idLibro);
+        for (Ejemplar ejemplar : ejemplares) {
+            mapEjemplar(ejemplar);
+        }
+        return ejemplares;
+    }
 
     public Ejemplar getEjemplarById(int id) {
         LOG.info("Llamando getEjemplarById con id '{}'", id);

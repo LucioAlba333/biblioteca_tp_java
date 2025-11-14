@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.LinkedList;
+
 public class Libro {
     private int id;
     @NotBlank(message = "El titulo del libro no puede estar vacio")
@@ -19,15 +21,16 @@ public class Libro {
 
     @NotNull(message = "el libro debe tener una editorial")
     private Editorial editorial;
-
+    public final LinkedList<Ejemplar> ejemplares;
     public Libro(Autor autor, Editorial editorial, Genero genero, int id, String titulo) {
         this.autor = autor;
         this.editorial = editorial;
         this.genero = genero;
         this.id = id;
         this.titulo = titulo;
+        this.ejemplares = new LinkedList<>();
     }
-    public Libro() {}
+    public Libro() {this.ejemplares = new LinkedList<>();}
 
     public Autor getAutor() {
         return autor;

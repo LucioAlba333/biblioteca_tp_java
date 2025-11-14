@@ -58,7 +58,7 @@ public class LibroRepository {
     }
     public void insertLibro(Libro libro) {
         String sql =
-            "INSERT INTO LIBROS (titulo, id_autor, id_genero, id_editorial) VALUES (?,?,?,?)";
+            "INSERT INTO LIBROS (titulo, id_autor, id_editorial, id_genero) VALUES (?,?,?,?)";
             
         try (Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)){
@@ -66,7 +66,6 @@ public class LibroRepository {
             stmt.setInt(2, libro.getAutor().getId());
             stmt.setInt(3, libro.getEditorial().getId());
             stmt.setInt(4, libro.getGenero().getId());
-            stmt.setInt(5, libro.getEditorial().getId());
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) {

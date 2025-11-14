@@ -7,6 +7,7 @@
     <title>Error</title>
 </head>
 <body>
+<%@ include file="../../navbar.jsp" %>
 <h1>Status <%=statusCode%></h1>
 <h2>Error</h2>
 <p><%=error%></p>

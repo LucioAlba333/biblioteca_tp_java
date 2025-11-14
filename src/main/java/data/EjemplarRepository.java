@@ -47,6 +47,21 @@ public class EjemplarRepository {
         }
         return ejemplares;
     }
+    public LinkedList<Ejemplar> getAllEjemplaresByLibro(int idLibro) {
+        String sql = "SELECT * FROM ejemplares where id_libro = ?";
+        LinkedList<models.Ejemplar> ejemplares = new LinkedList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idLibro);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                ejemplares.add(mapEjemplar(rs));
+            }
+        } catch (SQLException e) {
+            LOG.error("Error al obtener la lista de ejemplares", e);
+        }
+        return ejemplares;
+    }
     public LinkedList<Ejemplar> getAllEjemplaresPrestados() {
         String sql = "SELECT * FROM ejemplares WHERE id_prestamo IS NOT NULL";
         LinkedList<Ejemplar> ejemplares = new LinkedList<>();

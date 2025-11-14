@@ -1,9 +1,6 @@
 package services;
 
-import data.AutorRepository;
-import data.EditorialRepository;
-import data.GeneroRepository;
-import data.LibroRepository;
+import data.*;
 import models.Autor;
 import models.Editorial;
 import models.Genero;
@@ -20,19 +17,23 @@ public class LibroService {
     private final AutorRepository autorRepository;
     private final EditorialRepository editorialRepository;
     private final GeneroRepository generoRepository;
+    private final EjemplarRepository ejemplarRepository;
 
     public LibroService() {
         this.libroRepository = new LibroRepository();
         this.autorRepository = new AutorRepository();
         this.editorialRepository = new EditorialRepository();
         this.generoRepository = new GeneroRepository();
+        this.ejemplarRepository = new EjemplarRepository();
     }
 
     public LinkedList<Libro> listarLibros() {
         LOG.info("Llamando getAllLibros");
         LinkedList<Libro> libros = libroRepository.getAllLibros();
+
         for (Libro libro : libros) {
             mapLibro(libro);
+            libro.ejemplares.addAll(ejemplarRepository.getAllEjemplaresByLibro(libro.getId()));
         }
         return libros;
     }
