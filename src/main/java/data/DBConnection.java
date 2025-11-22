@@ -3,7 +3,7 @@ import java.sql.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DBConnection {
+public final class DBConnection {
     private static final Logger LOG = LoggerFactory.getLogger(DBConnection.class);
 
     private static final String driver = "com.mysql.cj.jdbc.Driver";
@@ -14,6 +14,7 @@ public class DBConnection {
             "jdbc:mysql://localhost:3306/"+db
             + "?user="+user+"&password="+password;
 
+    private DBConnection() {}
     static {
         try {
             Class.forName(driver);
@@ -22,7 +23,7 @@ public class DBConnection {
             LOG.error("Error al registrar el driver '{}'", driver, e);
         }
     }
-    protected static Connection getConnection() throws SQLException {
+    static Connection getConnection() throws SQLException {
         try {
             return DriverManager.getConnection(url);
         }catch (SQLException e){
